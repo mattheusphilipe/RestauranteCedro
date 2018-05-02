@@ -50,7 +50,7 @@ export class PratoComponent implements OnInit
 
     }
 
-    addePrato()
+    addPrato()
     {
         this.dbops = DBOperation.create;
         this.SetControlsState(true);
@@ -60,7 +60,7 @@ export class PratoComponent implements OnInit
         this.modal.open();
     }
 
-    editePrato(id: number)
+    editPrato(id: number)
     {
         this.dbops = DBOperation.update;
         this.SetControlsState(true);

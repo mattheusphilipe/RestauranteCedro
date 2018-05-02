@@ -1,28 +1,30 @@
-﻿<div class='panel panel-primary'>
+﻿<div class='panel panel-info'>
     <div class='panel-heading'>
         Gerenciar Pratos
     </div>
 
-    <div style="padding-bottom:10px"><button class="btn btn-primary" (click)="addPratos()">Adicionar</button></div>
+    <div style="padding-bottom:10px"><button class="btn btn-default" (click)="addPrato()">Adicionar</button></div>
 
     <div class='panel-body'>
         <div class='table-responsive'>
 
             <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../imagens/loading.gif" width="32" height="32" /> Carregando...</div>
-            <div *ngIf='pratos && pratos.length==0' class="alert alert-info" role="alert">Sem Registros no Banco de Dados</div>
-            <table class='table table-striped' *ngIf='pratos && pratos.length'>
+            <div *ngIf='prato && pratos.length==0' class="alert alert-info" role="alert">Sem Registros no Banco de Dados</div>
+            <table class='table table-hover' *ngIf='pratos && pratos.length'>
                 <thead>
                     <tr>
+                        <th>Codigo</th>
                         <th>Nome Prato</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let prato of pratos">
+                        <td>{{prato.Id}}</td>
                         <td>{{prato.PratoName}}</td>
                         <td>
-                            <button title="Editar" class="btn btn-primary" (click)="editPrato(prato.Id)">Editar</button>
-                            <button title="Excluir" class="btn btn-danger" (click)="deletePrato(prato.Id)">Apagar</button>
+                            <button title="Editar" class="btn btn-default" (click)="editPrato(prato.Id)">Editar</button>
+                            <button title="Excluir" class="btn btn-default" (click)="deletePrato(prato.Id)">Apagar</button>
                         </td>
                     </tr>
                 </tbody>
