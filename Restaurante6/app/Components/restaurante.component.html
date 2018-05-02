@@ -1,0 +1,84 @@
+﻿
+<div class='panel panel-info'>
+    <div class='panel-heading'>
+        Gerenciar Restaurantes
+    </div>
+
+    <div style="padding:17px" class="col-md-1"><button class="btn btn-default" (click)="addRestaurante()">Adicionar</button></div>
+
+    <div>
+
+    </div>
+
+    <div class='panel-body'>
+        <div class='table-responsive' >
+            <div class="alert alert-info" style="padding:50px;" role="alert" *ngIf="indLoading"><img src="../../imagens/loading.gif" width="32" height="32" /> Carregando...</div>
+            <div *ngIf='restaurantes && restaurantes.length==0' class="alert alert-danger" role="alert">Sem dados Registrados!</div>
+            <table class='table table-hover' *ngIf='restaurantes && restaurantes.length'>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome Restaurante</th>
+                        <th>Nome Prato</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let restaurante of restaurantes">
+                        <td>{{restaurante.Id}}</td>
+                        <td>{{restaurante.RestauranteName}}</td>
+                        <td>{{restaurante.PratoName}}</td>
+                        <td>
+                            <button title="Editar" class="btn btn-default" (click)="editRestaurante(restaurante.Id)">Editar</button>
+                            <button title="Excluir" class="btn btn-default" (click)="deleteRestaurante(restaurante.Id)">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+            </div>
+        </div>
+        <div *ngIf="msg" role="alert" class="alert alert-info alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{msg}}
+        </div>
+    </div>
+</div>
+
+<modal #modal>
+    <form novalidate (ngSubmit)="onSubmit(restauranteFrm)" [formGroup]="restauranteFrm">
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">{{modalTitle}}</h4>
+        </modal-header>
+        <modal-body>
+
+            <div class="form-group">
+                <div>
+                    <span>Restaurante*</span>
+                    <input type="text" class="form-control" placeholder="Nome Restaurante" formControlName="RestauranteName">
+                </div>
+                <div>
+                    <span>Prato</span>
+                    <input type="text" class="form-control" placeholder="Prato Nome" formControlName="PratoName">
+                </div>
+                <div>
+                </div>
+            </div>
+        </modal-body>
+        <modal-footer>
+            <div>
+                <a class="btn btn-default" (click)="modal.dismiss()">Cancelar</a>
+                <button type="submit" [disabled]="restauranteFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
+            </div>
+        </modal-footer>
+    </form>
+</modal>
+
+<div class="container body-content">
+        <hr />
+    <footer>
+        <p>Powered by Matheus-made-it</p>
+    </footer>
+</div>
