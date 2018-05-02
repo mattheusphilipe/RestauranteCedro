@@ -32,9 +32,9 @@ export class RestauranteComponent implements OnInit
     {
 
         this.restauranteFrm = this.fb.group({
-            Id: [''],
+           Id: [''],
            RestauranteName: ['', Validators.required],
-           PratoName: ['']
+           PratoName: ['', Validators.required]
         });
 
         this.LoadRestaurantes();

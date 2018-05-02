@@ -34,7 +34,7 @@ export class PratoComponent implements OnInit
 
         this.pratoFrm = this.fb.group({
             Id: [''],            
-            PratoName: ['']
+            PratoName: ['', Validators.required]
         });
 
         this.LoadPratos();

@@ -3,12 +3,12 @@
         Gerenciar Pratos
     </div>
 
-    <div style="padding-bottom:10px"><button class="btn btn-default" (click)="addPrato()">Adicionar</button></div>
+    <div style="padding:17px"  class="col-md-1"><button class="btn btn-default" (click)="addPrato()">Adicionar</button></div>
 
     <div class='panel-body'>
         <div class='table-responsive'>
 
-            <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../imagens/loading.gif" width="32" height="32" /> Carregando...</div>
+            <div class="alert alert-info" style="padding:50px;" role="alert" *ngIf="indLoading"><img src="../../imagens/loading.gif" width="32" height="32" /> Carregando...</div>
             <div *ngIf='prato && pratos.length==0' class="alert alert-info" role="alert">Sem Registros no Banco de Dados</div>
             <table class='table table-hover' *ngIf='pratos && pratos.length'>
                 <thead>
@@ -42,7 +42,7 @@
 </div>
 
 <modal #modal>
-    <form novalidate (ngSubmit)="onSubmit(restauranteFrm)" [formGroup]="pratoFrm">
+    <form novalidate (ngSubmit)="onSubmit(pratoFrm)" [formGroup]="pratoFrm">
         <modal-header [show-close]="true">
             <h4 class="modal-title">{{modalTitle}}</h4>
         </modal-header>
@@ -60,7 +60,7 @@
         <modal-footer>
             <div>
                 <a class="btn btn-default" (click)="modal.dismiss()">Cancelar</a>
-                <button type="submit" [disabled]="pratoFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
+                <button type="submit" class="btn btn-default">{{modalBtnTitle}}</button>
             </div>
         </modal-footer>
     </form>
