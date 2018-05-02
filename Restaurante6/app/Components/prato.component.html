@@ -60,7 +60,7 @@
         <modal-footer>
             <div>
                 <a class="btn btn-default" (click)="modal.dismiss()">Cancelar</a>
-                <button type="submit" class="btn btn-default">{{modalBtnTitle}}</button>
+                <button type="submit" [disabled]="pratoFrm.invalid" class="btn btn-default">{{modalBtnTitle}}</button>
             </div>
         </modal-footer>
     </form>
